@@ -1,9 +1,9 @@
 package com.epam.training.klimov.rentalservice;
 
+import com.epam.training.klimov.rentalservice.dao.IRentalServiceDAO;
 import com.epam.training.klimov.rentalservice.entities.RentUnit;
 import com.epam.training.klimov.rentalservice.entities.Shop;
 import com.epam.training.klimov.rentalservice.tools.Configuration;
-import com.epam.training.klimov.rentalservice.tools.Initializer;
 import com.epam.training.klimov.rentalservice.tools.Messages;
 import com.epam.training.klimov.rentalservice.tools.UserInputHandler;
 
@@ -13,21 +13,26 @@ import com.epam.training.klimov.rentalservice.tools.UserInputHandler;
  * @author Konstantin Klimov
  */
 
-public class RentalServiceDispatcher {
+class RentalServiceDispatcher {
     private RentUnit rentUnit;
     private Shop shop;
+    private IRentalServiceDAO dao;
 
-    public RentalServiceDispatcher() {
+    RentalServiceDispatcher(IRentalServiceDAO dao) {
+        this.dao = dao;
     }
 
-    public void initialization() {
-        rentUnit = new RentUnit();
-        shop = new Shop();
-        Initializer.initialize(rentUnit);
-        Initializer.initialize(shop);
+    void initialization() {
+        rentUnit = dao.readRentUnit();
+        shop = dao.readShop();
     }
 
-    public void loginMenu() {
+    private void saveApplicationState() {
+        dao.saveRentUnit(rentUnit);
+        dao.saveShop(shop);
+    }
+
+    void loginMenu() {
         while (true) {
             Messages.printLoginMenu();
             switch (UserInputHandler.inputNumber()) {
@@ -39,6 +44,7 @@ public class RentalServiceDispatcher {
                     break;
                 case Configuration.EXIT:
                     System.out.println(Messages.EXITING_MESSAGE);
+                    saveApplicationState();
                     System.exit(0);
                     break;
                 default:

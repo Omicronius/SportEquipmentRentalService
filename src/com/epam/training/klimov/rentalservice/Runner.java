@@ -4,6 +4,7 @@
 
 package com.epam.training.klimov.rentalservice;
 
+import com.epam.training.klimov.rentalservice.dao.DAOImpl.XmlDAOImpl;
 import com.epam.training.klimov.rentalservice.tools.Messages;
 
  /* The entrance of the application. Invokes dispatcher, initializes his state and allows to choose access level.
@@ -18,7 +19,7 @@ public class Runner {
 
     public static void main(String[] args) {
         System.out.println(Messages.GREETING_MESSAGE);
-        RentalServiceDispatcher rsd = new RentalServiceDispatcher();
+        RentalServiceDispatcher rsd = new RentalServiceDispatcher(new XmlDAOImpl());
         rsd.initialization();
         rsd.loginMenu();
         System.out.println(Messages.EXITING_MESSAGE);
