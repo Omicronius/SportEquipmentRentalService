@@ -23,6 +23,3 @@ public class UserInputHandler {
         }
     }
 }
-
-
-//System.out.println(Messages.INCORRECT_INPUT);

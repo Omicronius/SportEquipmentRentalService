@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c2bd75d-4d55-42b5-aba5-b5245f41211d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SportEquipmentRent/com/epam/training/klimov/rentalservice/RentalServiceDispatcher.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SportEquipmentRent/com/epam/training/klimov/rentalservice/Runner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SportEquipmentRent/com/epam/training/klimov/rentalservice/entities/RentUnit.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SportEquipmentRent/com/epam/training/klimov/rentalservice/entities/Shop.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SportEquipmentRent/com/epam/training/klimov/rentalservice/entities/SportEquipment.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SportEquipmentRent/com/epam/training/klimov/rentalservice/enums/Category.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SportEquipmentRent/com/epam/training/klimov/rentalservice/tools/Configuration.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SportEquipmentRent/com/epam/training/klimov/rentalservice/tools/Initializer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SportEquipmentRent/com/epam/training/klimov/rentalservice/tools/Messages.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SportEquipmentRent/com/epam/training/klimov/rentalservice/tools/UserInputHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/description.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/project-template.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SportEquipmentRent.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/RentalServiceDispatcher.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/Runner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/entities/RentUnit.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/entities/Shop.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/entities/SportEquipment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/enums/Category.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/tools/Configuration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/tools/Initializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/tools/Messages.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/tools/UserInputHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/tools/UserInputHandler.java" afterPath="$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/tools/UserInputHandler.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,8 +55,8 @@
       <file leaf-file-name="UserInputHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/tools/UserInputHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -761,15 +734,23 @@
       <option name="presentableId" value="Default" />
       <updated>1494052253086</updated>
       <workItem from="1494052255950" duration="18167000" />
-      <workItem from="1494072557557" duration="130000" />
+      <workItem from="1494072557557" duration="391000" />
     </task>
+    <task id="LOCAL-00001" summary="First commit">
+      <created>1494072716882</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1494072716882</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18297000" />
+    <option name="totallyTimeSpent" value="18558000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1874" height="1216" extended-state="6" />
+    <frame x="-8" y="-8" width="1874" height="1216" extended-state="7" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -780,7 +761,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32971996" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32971996" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -840,7 +821,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="First commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1048,8 +1030,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/epam/training/klimov/rentalservice/tools/UserInputHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
