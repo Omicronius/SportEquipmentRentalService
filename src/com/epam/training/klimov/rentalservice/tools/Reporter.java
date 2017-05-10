@@ -1,9 +1,7 @@
 package com.epam.training.klimov.rentalservice.tools;
 
 import com.epam.training.klimov.rentalservice.entities.RentUnit;
-import com.epam.training.klimov.rentalservice.entities.Shop;
 import com.epam.training.klimov.rentalservice.entities.SportEquipment;
-
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -30,12 +28,18 @@ public class Reporter {
         return true;
     }
 
-    public static void showRentedEquipment(RentUnit rentUnit) {
+    public static boolean showRentedEquipment(RentUnit rentUnit) {
         SportEquipment[] rented = rentUnit.getUnits();
+        boolean isEmpty = true;
         for (int i = 0; i < Configuration.MAX_ALLOWED_UNITS_TO_RENT; i++) {
             if (rented[i] != null) {
+                isEmpty = false;
                 System.out.println(rented[i].toString());
             }
         }
+        if (isEmpty) {
+            System.out.println(Messages.EMPTY_RENTED_LIST);
+        }
+        return !isEmpty;
     }
 }

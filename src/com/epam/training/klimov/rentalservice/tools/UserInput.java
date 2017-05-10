@@ -1,5 +1,6 @@
 package com.epam.training.klimov.rentalservice.tools;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,7 +19,14 @@ public class UserInput {
     }
 
     public static String inputString() {
-        return scanner.nextLine();
+        String str;
+        while (true) {
+            str = scanner.nextLine();
+            if (str.length() > 0) {
+                return str;
+            } else {
+                System.out.println(Messages.ZERO_LENGTH_INPUT_STRING);
+            }
+        }
     }
-
 }

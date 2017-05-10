@@ -5,7 +5,6 @@ import com.epam.training.klimov.rentalservice.entities.RentUnit;
 import com.epam.training.klimov.rentalservice.entities.Shop;
 import com.epam.training.klimov.rentalservice.enums.UserCommands;
 import com.epam.training.klimov.rentalservice.exceptions.UnknownCommandException;
-import com.epam.training.klimov.rentalservice.interfaces.IUserInputOutput;
 import com.epam.training.klimov.rentalservice.tools.Messages;
 import com.epam.training.klimov.rentalservice.tools.Operator;
 import com.epam.training.klimov.rentalservice.tools.Reporter;
@@ -44,13 +43,17 @@ class RentalServiceDispatcher {
                 UserCommands userCommand = UserCommands.stringToCommand(UserInput.inputString());
                 switch (userCommand) {
                     case RENT_AN_EQUIPMENT:
-                        operator.rentEquipment(shop, rentUnit);
+                        if (operator.checkAvailableSlots(rentUnit) && Reporter.showAvailableEquipment(shop.getGoods())) {
+                            operator.rentEquipment(shop, rentUnit);
+                        }
                         break;
                     case SHOW_RENTED:
                         Reporter.showRentedEquipment(rentUnit);
                         break;
                     case BRING_BACK:
-                        operator.returnRentedEqupment(shop, rentUnit);
+                        if (Reporter.showRentedEquipment(rentUnit)) {
+                            operator.returnRentedEquipment(shop, rentUnit);
+                        }
                         break;
                     case AVAILABLE_EQUIPMENT:
                         Reporter.showAvailableEquipment(shop.getGoods());
