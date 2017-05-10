@@ -3,9 +3,13 @@ package com.epam.training.klimov.rentalservice;
 import com.epam.training.klimov.rentalservice.dao.IRentalServiceDAO;
 import com.epam.training.klimov.rentalservice.entities.RentUnit;
 import com.epam.training.klimov.rentalservice.entities.Shop;
-import com.epam.training.klimov.rentalservice.tools.Configuration;
+import com.epam.training.klimov.rentalservice.enums.UserCommands;
+import com.epam.training.klimov.rentalservice.exceptions.UnknownCommandException;
+import com.epam.training.klimov.rentalservice.interfaces.IUserInputOutput;
 import com.epam.training.klimov.rentalservice.tools.Messages;
-import com.epam.training.klimov.rentalservice.tools.UserInputHandler;
+import com.epam.training.klimov.rentalservice.tools.Operator;
+import com.epam.training.klimov.rentalservice.tools.Reporter;
+import com.epam.training.klimov.rentalservice.tools.UserInput;
 
 /**
  * The class RentalServiceDispatcher contains state of the application and menu methods.
@@ -16,63 +20,50 @@ import com.epam.training.klimov.rentalservice.tools.UserInputHandler;
 class RentalServiceDispatcher {
     private RentUnit rentUnit;
     private Shop shop;
-    private IRentalServiceDAO dao;
+    private Operator operator;
 
-    RentalServiceDispatcher(IRentalServiceDAO dao) {
-        this.dao = dao;
+    RentalServiceDispatcher(Operator operator) {
+        this.operator = operator;
     }
 
-    void initialization() {
-        rentUnit = dao.readRentUnit();
-        shop = dao.readShop();
+    void initialization(IRentalServiceDAO dao) {
+        rentUnit = dao.initRentUnit();
+        shop = dao.initShop();
     }
 
-    private void saveApplicationState() {
+    void saveConfiguration(IRentalServiceDAO dao) {
         dao.saveRentUnit(rentUnit);
         dao.saveShop(shop);
     }
 
-    void loginMenu() {
-        while (true) {
-            Messages.printLoginMenu();
-            switch (UserInputHandler.inputNumber()) {
-                case Configuration.ADMIN_ACCESS:
-                    adminMenu();
-                    break;
-                case Configuration.USER_ACCESS:
-                    userMenu();
-                    break;
-                case Configuration.EXIT:
-                    System.out.println(Messages.EXITING_MESSAGE);
-                    saveApplicationState();
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println(Messages.INCORRECT_INPUT);
-            }
-        }
-    }
-
-    private void adminMenu() {
-        out:
-        while (true) {
-            Messages.printAdminMenu();
-            switch (UserInputHandler.inputNumber()) {
-                case 0 : break out;
-                default:
-                    System.out.println(Messages.INCORRECT_INPUT);
-            }
-        }
-    }
-
-    private void userMenu() {
-        out:
-        while (true) {
-            Messages.printUserMenu();
-            switch (UserInputHandler.inputNumber()) {
-                case 0 : break out;
-                default:
-                    System.out.println(Messages.INCORRECT_INPUT);
+    void run() {
+        boolean inUserMenu = true;
+        while (inUserMenu) {
+            System.out.println(Messages.USER_MENU);
+            try {
+                UserCommands userCommand = UserCommands.stringToCommand(UserInput.inputString());
+                switch (userCommand) {
+                    case RENT_AN_EQUIPMENT:
+                        operator.rentEquipment(shop, rentUnit);
+                        break;
+                    case SHOW_RENTED:
+                        Reporter.showRentedEquipment(rentUnit);
+                        break;
+                    case BRING_BACK:
+                        operator.returnRentedEqupment(shop, rentUnit);
+                        break;
+                    case AVAILABLE_EQUIPMENT:
+                        Reporter.showAvailableEquipment(shop.getGoods());
+                        break;
+                    case SEARCH:
+                        Reporter.showAvailableEquipment(operator.findEquipment(shop));
+                        break;
+                    case EXIT:
+                        inUserMenu = false;
+                        break;
+                }
+            } catch (UnknownCommandException ex) {
+                System.out.println(Messages.INCORRECT_INPUT);
             }
         }
     }

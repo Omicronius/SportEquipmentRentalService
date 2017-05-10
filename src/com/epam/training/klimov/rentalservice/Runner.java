@@ -4,8 +4,13 @@
 
 package com.epam.training.klimov.rentalservice;
 
-import com.epam.training.klimov.rentalservice.dao.DAOImpl.XmlDAOImpl;
+import com.epam.training.klimov.rentalservice.dao.DAOImpl.SerializationDAOImpl;
+import com.epam.training.klimov.rentalservice.dao.IRentalServiceDAO;
+import com.epam.training.klimov.rentalservice.interfaces.ConsoleUserIOImpl;
+import com.epam.training.klimov.rentalservice.interfaces.IUserInputOutput;
 import com.epam.training.klimov.rentalservice.tools.Messages;
+import com.epam.training.klimov.rentalservice.tools.Operator;
+import com.epam.training.klimov.rentalservice.tools.Reporter;
 
  /* The entrance of the application. Invokes dispatcher, initializes his state and allows to choose access level.
  * @author Konstantin Klimov
@@ -19,9 +24,12 @@ public class Runner {
 
     public static void main(String[] args) {
         System.out.println(Messages.GREETING_MESSAGE);
-        RentalServiceDispatcher rsd = new RentalServiceDispatcher(new XmlDAOImpl());
-        rsd.initialization();
-        rsd.loginMenu();
+        IRentalServiceDAO dao = new SerializationDAOImpl();
+        Operator operator = new Operator();
+        RentalServiceDispatcher rsd = new RentalServiceDispatcher(operator);
+        rsd.initialization(dao);
+        rsd.run();
+        rsd.saveConfiguration(dao);
         System.out.println(Messages.EXITING_MESSAGE);
     }
 }

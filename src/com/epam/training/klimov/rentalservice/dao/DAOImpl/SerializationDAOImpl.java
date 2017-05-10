@@ -4,11 +4,11 @@ import com.epam.training.klimov.rentalservice.dao.IRentalServiceDAO;
 import com.epam.training.klimov.rentalservice.entities.RentUnit;
 import com.epam.training.klimov.rentalservice.entities.Shop;
 import com.epam.training.klimov.rentalservice.entities.SportEquipment;
+import com.epam.training.klimov.rentalservice.tools.Configuration;
+
 import java.util.HashMap;
 import java.util.Map;
-import static com.epam.training.klimov.rentalservice.enums.Category.Gym;
-import static com.epam.training.klimov.rentalservice.enums.Category.Leisure;
-import static com.epam.training.klimov.rentalservice.enums.Category.Water;
+import static com.epam.training.klimov.rentalservice.enums.Category.*;
 
 /**
  * This implementation allows to work with xml files.
@@ -16,16 +16,17 @@ import static com.epam.training.klimov.rentalservice.enums.Category.Water;
  * @author Konstantin Klimov
  */
 
-public class XmlDAOImpl implements IRentalServiceDAO {
+public class SerializationDAOImpl implements IRentalServiceDAO {
 
     @Override
-    public Shop readShop() {
+    public Shop initShop() {
         //TODO
         Shop shop = new Shop();
         Map<SportEquipment, Integer> goods = new HashMap<>();
         goods.put(new SportEquipment(Gym, "Barbell", 20), 3);
-        goods.put(new SportEquipment(Water, "Swimming trunks", 5), 2);
-        goods.put(new SportEquipment(Leisure, "Pillow", 7), 10);
+        goods.put(new SportEquipment(Water, "Ball", 5), 2);
+        goods.put(new SportEquipment(Leisure, "Pillow", 7), 5);
+        goods.put(new SportEquipment(Leisure, "Cards", 5), 10);
         shop.setGoods(goods);
         return shop;
     }
@@ -36,8 +37,12 @@ public class XmlDAOImpl implements IRentalServiceDAO {
     }
 
     @Override
-    public RentUnit readRentUnit() {
-        return null;
+    public RentUnit initRentUnit() {
+        RentUnit rentUnit = new RentUnit();
+        SportEquipment [] units = new SportEquipment[Configuration.MAX_ALLOWED_UNITS_TO_RENT];
+        units[1] = new SportEquipment(Gym, "Barbell", 20);
+        rentUnit.setUnits(units);
+        return rentUnit;
     }
 
     @Override

@@ -46,4 +46,11 @@ public class SportEquipment {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return  title +
+                ", Category : " + category +
+                ", Price : " + price;
+    }
 }

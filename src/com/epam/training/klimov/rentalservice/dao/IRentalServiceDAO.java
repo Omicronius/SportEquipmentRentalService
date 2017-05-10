@@ -11,11 +11,11 @@ import com.epam.training.klimov.rentalservice.entities.Shop;
  */
 
 public interface IRentalServiceDAO {
-    Shop readShop();
+    Shop initShop();
 
     void saveShop(Shop shop);
 
-    RentUnit readRentUnit();
+    RentUnit initRentUnit();
 
     void saveRentUnit(RentUnit rentUnit);
 }
