@@ -11,11 +11,7 @@ import com.epam.training.klimov.rentalservice.entities.Shop;
  */
 
 public interface IRentalServiceDAO {
-    Shop initShop();
+    void initialize(Shop shop, RentUnit rentUnit);
 
-    void saveShop(Shop shop);
-
-    RentUnit initRentUnit();
-
-    void saveRentUnit(RentUnit rentUnit);
+    void saveConfiguration(Shop shop, RentUnit rentUnit);
 }

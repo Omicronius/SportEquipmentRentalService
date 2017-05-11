@@ -1,14 +1,12 @@
 package com.epam.training.klimov.rentalservice;
 
 import com.epam.training.klimov.rentalservice.dao.IRentalServiceDAO;
+import com.epam.training.klimov.rentalservice.entities.SportEquipment;
 import com.epam.training.klimov.rentalservice.enums.UserCommands;
 import com.epam.training.klimov.rentalservice.entities.RentUnit;
 import com.epam.training.klimov.rentalservice.entities.Shop;
 import com.epam.training.klimov.rentalservice.exceptions.UnknownCommandException;
-import com.epam.training.klimov.rentalservice.tools.Messages;
-import com.epam.training.klimov.rentalservice.tools.Operator;
-import com.epam.training.klimov.rentalservice.tools.Reporter;
-import com.epam.training.klimov.rentalservice.tools.UserInput;
+import com.epam.training.klimov.rentalservice.tools.*;
 
 /**
  * The class RentalServiceDispatcher contains state of the application and menu methods.
@@ -17,17 +15,22 @@ import com.epam.training.klimov.rentalservice.tools.UserInput;
  */
 
 class RentalServiceDispatcher {
-    private RentUnit rentUnit;
     private Shop shop;
+    private RentUnit rentUnit;
+    IRentalServiceDAO dao;
 
-    void initialization(IRentalServiceDAO dao) {
-        rentUnit = dao.initRentUnit();
-        shop = dao.initShop();
+    public RentalServiceDispatcher(IRentalServiceDAO dao) {
+        this.dao = dao;
+        this.rentUnit = new RentUnit();
+        this.shop = new Shop();
     }
 
-    void saveConfiguration(IRentalServiceDAO dao) {
-        dao.saveRentUnit(rentUnit);
-        dao.saveShop(shop);
+    void initialization() {
+        dao.initialize(shop, rentUnit);
+    }
+
+    void saveConfiguration() {
+        dao.saveConfiguration(shop, rentUnit);
     }
 
     void run() {
@@ -58,6 +61,7 @@ class RentalServiceDispatcher {
                         break;
                     case EXIT:
                         inUserMenu = false;
+                        saveConfiguration();
                         break;
                 }
             } catch (UnknownCommandException ex) {

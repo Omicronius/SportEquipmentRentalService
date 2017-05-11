@@ -1,5 +1,6 @@
 package com.epam.training.klimov.rentalservice.entities;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -8,7 +9,8 @@ import java.util.Map;
  * @author Konstantin Klimov
  */
 
-public class Shop {
+public class Shop implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private Map<SportEquipment, Integer> goods;
 

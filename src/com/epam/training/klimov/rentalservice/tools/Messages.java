@@ -22,6 +22,8 @@ public class Messages {
     public static final String HAS_BEEN_RETURNED = "  has been returned.";
     public static final String ZERO_LENGTH_INPUT_STRING = "Could you enter longer word?...";
     public static final String LIST_OF_THE_RENTED_EQUIPMENT = "The list of rented equipment:";
+    public static final String FILE_NOT_FOUND = "The file has not been found.";
+    public static final String IO_EXCEPTION = "The program encountered with an IO exception.";
 
     public static final String USER_MENU =
         "User menu:" + "\n" +
@@ -31,4 +33,5 @@ public class Messages {
         "4. Print available equipment" + "\n" +
         "5. Search" + "\n" +
         "0. Back" + "\n";
+
 }
