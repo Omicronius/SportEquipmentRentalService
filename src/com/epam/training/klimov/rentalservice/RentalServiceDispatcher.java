@@ -1,7 +1,7 @@
 package com.epam.training.klimov.rentalservice;
 
 import com.epam.training.klimov.rentalservice.dao.IRentalServiceDAO;
-import com.epam.training.klimov.rentalservice.entities.SportEquipment;
+import com.epam.training.klimov.rentalservice.enums.MainMenuCommands;
 import com.epam.training.klimov.rentalservice.enums.UserCommands;
 import com.epam.training.klimov.rentalservice.entities.RentUnit;
 import com.epam.training.klimov.rentalservice.entities.Shop;
@@ -12,30 +12,53 @@ import com.epam.training.klimov.rentalservice.tools.*;
  * The class RentalServiceDispatcher contains state of the application and menu methods.
  *
  * @author Konstantin Klimov
+ *
+ * @see com.epam.training.klimov.rentalservice.tools.Reporter
+ * @see com.epam.training.klimov.rentalservice.tools.Operator
  */
 
 class RentalServiceDispatcher {
     private Shop shop;
     private RentUnit rentUnit;
-    IRentalServiceDAO dao;
+    private IRentalServiceDAO dao;
 
-    public RentalServiceDispatcher(IRentalServiceDAO dao) {
+    RentalServiceDispatcher(IRentalServiceDAO dao) {
         this.dao = dao;
         this.rentUnit = new RentUnit();
         this.shop = new Shop();
     }
 
-    void initialization() {
+    private void initialization() {
         dao.initialize(shop, rentUnit);
     }
 
-    void saveConfiguration() {
+    private void saveConfiguration() {
         dao.saveConfiguration(shop, rentUnit);
     }
 
-    void run() {
-        boolean inUserMenu = true;
-        while (inUserMenu) {
+    void mainMenu() {
+        System.out.println(Messages.MAIN_MENU);
+        while (true) {
+            try {
+                MainMenuCommands mainMenuCommand = MainMenuCommands.stringToCommand(UserInput.inputString());
+                switch (mainMenuCommand) {
+                    case INITIALIZE_APPLICATION:
+                        initialization();
+                        userMenu();
+                        break;
+                    case EXIT:
+                        UserInput.close();
+                        System.exit(0);
+                        break;
+                }
+            } catch (UnknownCommandException ex) {
+                System.out.println(Messages.INCORRECT_INPUT);
+            }
+        }
+    }
+
+    private void userMenu() {
+        while (true) {
             System.out.println(Messages.USER_MENU);
             try {
                 UserCommands userCommand = UserCommands.stringToCommand(UserInput.inputString());
@@ -60,8 +83,11 @@ class RentalServiceDispatcher {
                         Reporter.showAvailableEquipment(Operator.findEquipment(shop));
                         break;
                     case EXIT:
-                        inUserMenu = false;
+                        System.out.println(Messages.SAVING_AND_CLOSING_RESOURCES);
                         saveConfiguration();
+                        UserInput.close();
+                        System.out.println(Messages.EXITING_MESSAGE);
+                        System.exit(0);
                         break;
                 }
             } catch (UnknownCommandException ex) {

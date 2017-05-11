@@ -13,6 +13,13 @@ import java.util.Set;
  */
 public class Reporter {
 
+    /**
+     * The methods prints available elements and perform additional check for empty map.It returns true if the map has
+     * elements.
+     * @param goods
+     * @return
+     */
+
     public static boolean showAvailableEquipment(Map <SportEquipment, Integer> goods) {
         Set<SportEquipment> set = goods.keySet();
         Iterator<SportEquipment> it = set.iterator();
@@ -29,6 +36,13 @@ public class Reporter {
         }
         return true;
     }
+
+    /**
+     * The methods prints rented sport equipment of the user and return boolean which shows the presence of items in the
+     * list.
+     * @param rentUnit
+     * @return
+     */
 
     public static boolean showRentedEquipment(RentUnit rentUnit) {
         System.out.println(Messages.LIST_OF_THE_RENTED_EQUIPMENT);

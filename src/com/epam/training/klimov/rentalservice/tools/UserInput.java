@@ -5,7 +5,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Created by Администратор on 10.05.2017.
+ * The Class contains main methods to handle user's input.
+ *
+ * @author Konstantin Klimov
  */
 public class UserInput {
     private static Scanner scanner = new Scanner(System.in);
@@ -27,6 +29,12 @@ public class UserInput {
             } else {
                 System.out.println(Messages.ZERO_LENGTH_INPUT_STRING);
             }
+        }
+    }
+
+    public static void close() {
+        if (scanner != null) {
+            scanner.close();
         }
     }
 }

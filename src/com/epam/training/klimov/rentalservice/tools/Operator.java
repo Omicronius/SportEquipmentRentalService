@@ -12,6 +12,11 @@ import java.util.*;
  */
 public class Operator {
 
+    /**
+     * The method transfers the unit from the shop store to the user's rented list if unit's title matches the keyword.
+     * @param shop
+     * @param rentUnit
+     */
     public static void rentEquipment(Shop shop, RentUnit rentUnit) {
         System.out.print(Messages.ENTER_TITLE_OF_THE_EQUIPMENT);
         String keyword = UserInput.inputString().trim().toLowerCase();
@@ -32,6 +37,11 @@ public class Operator {
         }
     }
 
+    /**
+     *  The method returns the rented unit from the rented list to the shop store.
+     * @param shop
+     * @param rentUnit
+     */
     public static void returnRentedEquipment(Shop shop, RentUnit rentUnit) {
         System.out.print(Messages.ENTER_THE_TITLE_OF_THE_EQUIPMENT);
         String keyword = UserInput.inputString().trim().toLowerCase();
@@ -47,6 +57,11 @@ public class Operator {
         }
     }
 
+    /**
+     *  The method moves through the map and selects equipment which matches to the keyword.
+     * @param shop
+     * @return The map of the found equipment.
+     */
     public static Map<SportEquipment, Integer> findEquipment(Shop shop) {
         Map<SportEquipment, Integer> foundUnits = new HashMap<>();
         System.out.print(Messages.ENTER_SEARCH_KEYWORD);
@@ -59,6 +74,11 @@ public class Operator {
         return foundUnits;
     }
 
+    /**
+     * Helpful methods check user's ability to rent additional units.
+     * @param rentUnit
+     * @return
+     */
     public static boolean checkAvailableSlots(RentUnit rentUnit) {
         SportEquipment[] rented = rentUnit.getUnits();
         for (int i = 0; i < Configuration.MAX_ALLOWED_UNITS_TO_RENT; i++) {

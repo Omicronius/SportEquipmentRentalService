@@ -5,12 +5,14 @@ import com.epam.training.klimov.rentalservice.entities.Shop;
 
 
 /**
- * The interface IRentalServiceDAO provides basic operations with data.
+ * The interface provides initializes starting state of the application
+ * and saves the configuration before exiting program.
  *
  * @author Konstantin Klimov
  */
 
 public interface IRentalServiceDAO {
+
     void initialize(Shop shop, RentUnit rentUnit);
 
     void saveConfiguration(Shop shop, RentUnit rentUnit);

@@ -19,11 +19,22 @@ public class SportEquipment implements Serializable {
     public SportEquipment() {
     }
 
+    /**
+     * Constructor.
+     *
+     * @param category
+     *            - a category of a sport equipment
+     * @param title
+     *            - a title of a sport equipment
+     * @param price
+     *            - a price for rent per day
+     */
     public SportEquipment(Category category, String title, int price) {
         this.category = category;
         this.title = title;
         this.price = price;
     }
+
 
     public Category getCategory() {
         return category;
@@ -47,6 +58,26 @@ public class SportEquipment implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SportEquipment equipment = (SportEquipment) o;
+
+        if (price != equipment.price) return false;
+        if (category != equipment.category) return false;
+        return title != null ? title.equals(equipment.title) : equipment.title == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = category != null ? category.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + price;
+        return result;
     }
 
     @Override

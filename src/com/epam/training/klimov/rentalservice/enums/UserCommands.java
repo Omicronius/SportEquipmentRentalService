@@ -3,7 +3,9 @@ package com.epam.training.klimov.rentalservice.enums;
 import com.epam.training.klimov.rentalservice.exceptions.UnknownCommandException;
 
 /**
- * Created by Администратор on 10.05.2017.
+ * The enum contains user commands.
+ *
+ * @author Konstantin Klimov
  */
 public enum UserCommands {
     RENT_AN_EQUIPMENT, SHOW_RENTED, BRING_BACK, AVAILABLE_EQUIPMENT, SEARCH, EXIT, ;
