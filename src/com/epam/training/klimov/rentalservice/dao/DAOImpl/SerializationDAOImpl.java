@@ -18,7 +18,7 @@ import static com.epam.training.klimov.rentalservice.enums.Category.*;
  */
 
 public class SerializationDAOImpl implements IRentalServiceDAO {
-    ArrayList<SportEquipment> list;
+    private ArrayList<SportEquipment> list;
 
     public SerializationDAOImpl() {
         ArrayList<SportEquipment> initList = new ArrayList<>();
@@ -36,9 +36,10 @@ public class SerializationDAOImpl implements IRentalServiceDAO {
         Shop shop = new Shop();
         Map<SportEquipment, Integer> goods = new HashMap<>();
         goods.put(list.get(0), 1);
-        goods.put(list.get(1), 2);
-        goods.put(list.get(2), 5);
-        goods.put(list.get(3), 10);
+        goods.put(list.get(1), 4);
+        goods.put(list.get(2), 2);
+        goods.put(list.get(3), 5);
+        goods.put(list.get(4), 10);
         shop.setGoods(goods);
         return shop;
     }
@@ -51,10 +52,8 @@ public class SerializationDAOImpl implements IRentalServiceDAO {
     @Override
     public RentUnit initRentUnit() {
         RentUnit rentUnit = new RentUnit();
-        SportEquipment [] units = new SportEquipment[Configuration.MAX_ALLOWED_UNITS_TO_RENT];
-        units[1] = list.get(1);
-        //units[0] = list.get(1);
-        rentUnit.setUnits(units);
+        SportEquipment [] rentedUnits = new SportEquipment[Configuration.MAX_ALLOWED_UNITS_TO_RENT];
+        rentUnit.setUnits(rentedUnits);
         return rentUnit;
     }
 
