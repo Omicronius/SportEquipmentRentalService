@@ -7,7 +7,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by Администратор on 10.05.2017.
+ * The class helps to print reports.
+ *
+ * @author Konstantin Klimov
  */
 public class Reporter {
 
@@ -29,6 +31,7 @@ public class Reporter {
     }
 
     public static boolean showRentedEquipment(RentUnit rentUnit) {
+        System.out.println(Messages.LIST_OF_THE_RENTED_EQUIPMENT);
         SportEquipment[] rented = rentUnit.getUnits();
         boolean isEmpty = true;
         for (int i = 0; i < Configuration.MAX_ALLOWED_UNITS_TO_RENT; i++) {

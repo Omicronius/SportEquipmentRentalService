@@ -1,9 +1,9 @@
 package com.epam.training.klimov.rentalservice;
 
 import com.epam.training.klimov.rentalservice.dao.IRentalServiceDAO;
+import com.epam.training.klimov.rentalservice.enums.UserCommands;
 import com.epam.training.klimov.rentalservice.entities.RentUnit;
 import com.epam.training.klimov.rentalservice.entities.Shop;
-import com.epam.training.klimov.rentalservice.enums.UserCommands;
 import com.epam.training.klimov.rentalservice.exceptions.UnknownCommandException;
 import com.epam.training.klimov.rentalservice.tools.Messages;
 import com.epam.training.klimov.rentalservice.tools.Operator;
@@ -19,11 +19,6 @@ import com.epam.training.klimov.rentalservice.tools.UserInput;
 class RentalServiceDispatcher {
     private RentUnit rentUnit;
     private Shop shop;
-    private Operator operator;
-
-    RentalServiceDispatcher(Operator operator) {
-        this.operator = operator;
-    }
 
     void initialization(IRentalServiceDAO dao) {
         rentUnit = dao.initRentUnit();
@@ -43,8 +38,8 @@ class RentalServiceDispatcher {
                 UserCommands userCommand = UserCommands.stringToCommand(UserInput.inputString());
                 switch (userCommand) {
                     case RENT_AN_EQUIPMENT:
-                        if (operator.checkAvailableSlots(rentUnit) && Reporter.showAvailableEquipment(shop.getGoods())) {
-                            operator.rentEquipment(shop, rentUnit);
+                        if (Operator.checkAvailableSlots(rentUnit) && Reporter.showAvailableEquipment(shop.getGoods())) {
+                            Operator.rentEquipment(shop, rentUnit);
                         }
                         break;
                     case SHOW_RENTED:
@@ -52,14 +47,14 @@ class RentalServiceDispatcher {
                         break;
                     case BRING_BACK:
                         if (Reporter.showRentedEquipment(rentUnit)) {
-                            operator.returnRentedEquipment(shop, rentUnit);
+                            Operator.returnRentedEquipment(shop, rentUnit);
                         }
                         break;
                     case AVAILABLE_EQUIPMENT:
                         Reporter.showAvailableEquipment(shop.getGoods());
                         break;
                     case SEARCH:
-                        Reporter.showAvailableEquipment(operator.findEquipment(shop));
+                        Reporter.showAvailableEquipment(Operator.findEquipment(shop));
                         break;
                     case EXIT:
                         inUserMenu = false;

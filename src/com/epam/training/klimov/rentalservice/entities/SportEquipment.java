@@ -50,7 +50,7 @@ public class SportEquipment {
     @Override
     public String toString() {
         return  title +
-                ", Category : " + category +
-                ", Price : " + price;
+                " (Category:" + category +
+                ", Price:" + price + ")";
     }
 }

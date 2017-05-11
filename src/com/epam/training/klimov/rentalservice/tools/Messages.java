@@ -17,9 +17,11 @@ public class Messages {
     public static final String NOT_ENOUGH_AVAILABLE_SLOTS = "Not enough available empty slots! Please, bring back some items.";
     public static final String ENTER_THE_TITLE_OF_THE_EQUIPMENT = "Enter the title of the equipment:";
     public static final String ENTER_SEARCH_KEYWORD = "Enter search keyword:";
-    public static final String ITEM_HAS_BEEN_RETURNED = "The item has been returned.";
-    public static final String EQUIPMENT_HAS_BEEN_RENTED = "The sport equipment has been rented and successfully added to your list.";
+    public static final String EQUIPMENT = "The sport equipment  ";
+    public static final String HAS_BEEN_RENTED = "  has been successfully added to your list.";
+    public static final String HAS_BEEN_RETURNED = "  has been returned.";
     public static final String ZERO_LENGTH_INPUT_STRING = "Could you enter longer word?...";
+    public static final String LIST_OF_THE_RENTED_EQUIPMENT = "The list of rented equipment:";
 
     public static final String USER_MENU =
         "User menu:" + "\n" +

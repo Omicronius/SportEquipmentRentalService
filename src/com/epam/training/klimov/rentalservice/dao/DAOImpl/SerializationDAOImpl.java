@@ -23,9 +23,10 @@ public class SerializationDAOImpl implements IRentalServiceDAO {
     public SerializationDAOImpl() {
         ArrayList<SportEquipment> initList = new ArrayList<>();
         initList.add(new SportEquipment(Gym, "Barbell", 20));
-        initList.add(new SportEquipment(Water, "Ball", 5));
+        initList.add(new SportEquipment(Gym, "Dumbbells", 12));
+        initList.add(new SportEquipment(Water, "Kitesurf kit", 50));
         initList.add(new SportEquipment(Leisure, "Pillow", 7));
-        initList.add(new SportEquipment(Leisure, "Cards", 10));
+        initList.add(new SportEquipment(Leisure, "Cards", 5));
         this.list = initList;
     }
 

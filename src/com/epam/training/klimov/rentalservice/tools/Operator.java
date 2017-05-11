@@ -5,13 +5,14 @@ import com.epam.training.klimov.rentalservice.entities.Shop;
 import com.epam.training.klimov.rentalservice.entities.SportEquipment;
 
 import java.util.*;
-
 /**
- * Created by Администратор on 10.05.2017.
+ * The Class contains main methods for searching, rent and returning rented equipment.
+ *
+ * @author Konstantin Klimov
  */
 public class Operator {
 
-    public void rentEquipment(Shop shop, RentUnit rentUnit) {
+    public static void rentEquipment(Shop shop, RentUnit rentUnit) {
         System.out.print(Messages.ENTER_TITLE_OF_THE_EQUIPMENT);
         String keyword = UserInput.inputString().trim().toLowerCase();
         Iterator <SportEquipment> it = shop.getGoods().keySet().iterator();
@@ -23,7 +24,7 @@ public class Operator {
                 for (int i = 0; i < Configuration.MAX_ALLOWED_UNITS_TO_RENT; i++) {
                     if (rentedUnits[i] == null) {
                         rentedUnits[i] = equipment;
-                        System.out.println(Messages.EQUIPMENT_HAS_BEEN_RENTED);
+                        System.out.println(Messages.EQUIPMENT + equipment.toString() + Messages.HAS_BEEN_RENTED);
                         return;
                     }
                 }
@@ -31,7 +32,7 @@ public class Operator {
         }
     }
 
-    public void returnRentedEquipment(Shop shop, RentUnit rentUnit) {
+    public static void returnRentedEquipment(Shop shop, RentUnit rentUnit) {
         System.out.print(Messages.ENTER_THE_TITLE_OF_THE_EQUIPMENT);
         String keyword = UserInput.inputString().trim().toLowerCase();
         SportEquipment[] rentedUnits = rentUnit.getUnits();
@@ -40,13 +41,13 @@ public class Operator {
             if (!itemReturned && rentedUnits[i] != null && rentedUnits[i].getTitle().toLowerCase().contains(keyword)) {
                 shop.getGoods().put(rentedUnits[i], shop.getGoods().get(rentedUnits[i]) + 1);
                 itemReturned = true;
-                System.out.println(Messages.ITEM_HAS_BEEN_RETURNED);
+                System.out.println(Messages.EQUIPMENT + rentedUnits[i].toString() + Messages.HAS_BEEN_RETURNED);
                 rentedUnits[i] = null;
             }
         }
     }
 
-    public Map<SportEquipment, Integer> findEquipment(Shop shop) {
+    public static Map<SportEquipment, Integer> findEquipment(Shop shop) {
         Map<SportEquipment, Integer> foundUnits = new HashMap<>();
         System.out.print(Messages.ENTER_SEARCH_KEYWORD);
         String keyword = UserInput.inputString().trim().toLowerCase();
@@ -58,7 +59,7 @@ public class Operator {
         return foundUnits;
     }
 
-    public boolean checkAvailableSlots(RentUnit rentUnit) {
+    public static boolean checkAvailableSlots(RentUnit rentUnit) {
         SportEquipment[] rented = rentUnit.getUnits();
         for (int i = 0; i < Configuration.MAX_ALLOWED_UNITS_TO_RENT; i++) {
             if (rented[i] == null) {

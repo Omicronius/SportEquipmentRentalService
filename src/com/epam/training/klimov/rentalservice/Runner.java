@@ -9,21 +9,25 @@ import com.epam.training.klimov.rentalservice.dao.IRentalServiceDAO;
 import com.epam.training.klimov.rentalservice.tools.Messages;
 import com.epam.training.klimov.rentalservice.tools.Operator;
 
- /* The entrance of the application. Invokes dispatcher, initializes his state and allows to choose access level.
+ /** "SportEquipmentRent" program is a console application, where
+ * user can rent or return rented an sport equipment via computer console. Invokes dispatcher, initializes his state and allows.
+ *
  * @author Konstantin Klimov
+ * @version 1.0
  */
 
 public class Runner {
 
     /**
+     * The entry point of the program.
+     *
      * @param args
      */
 
     public static void main(String[] args) {
         System.out.println(Messages.GREETING_MESSAGE);
         IRentalServiceDAO dao = new SerializationDAOImpl();
-        Operator operator = new Operator();
-        RentalServiceDispatcher rsd = new RentalServiceDispatcher(operator);
+        RentalServiceDispatcher rsd = new RentalServiceDispatcher();
         rsd.initialization(dao);
         rsd.run();
         rsd.saveConfiguration(dao);

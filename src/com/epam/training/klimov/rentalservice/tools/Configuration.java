@@ -5,4 +5,5 @@ package com.epam.training.klimov.rentalservice.tools;
  */
 public class Configuration {
     public static final int MAX_ALLOWED_UNITS_TO_RENT = 3;
+    public static final String pathToFile = "test.bin";
 }
